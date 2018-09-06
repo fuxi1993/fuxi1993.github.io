@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2018/09/05/what-s-thread-safe/</loc>
+    
+    <lastmod>2018-09-06T02:11:51.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2018/08/22/Java-exception/</loc>
     
     <lastmod>2018-08-22T03:18:55.000Z</lastmod>
