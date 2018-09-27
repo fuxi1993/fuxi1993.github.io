@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-09-20T06:54:47.000Z</updated>
+  <updated>2018-09-27T06:12:43.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Dive into AbstractQueuedSynchronizer</title>
+    <link href="http://yoursite.com/2018/09/27/aqs-md/"/>
+    <id>http://yoursite.com/2018/09/27/aqs-md/</id>
+    <published>2018-09-27T06:09:51.000Z</published>
+    <updated>2018-09-27T06:12:43.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>坑待填<br><a href="aqs.pdf">The java.util.concurrent Synchronizer Framework</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;坑待填&lt;br&gt;&lt;a href=&quot;aqs.pdf&quot;&gt;The java.util.concurrent Synchronizer Framework&lt;/a&gt;&lt;/p&gt;
+
+      
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>Dive into FutureTask</title>
