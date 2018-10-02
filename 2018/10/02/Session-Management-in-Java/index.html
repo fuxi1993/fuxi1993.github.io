@@ -1,0 +1,44 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> Session Management in Java · FuXi's Daily</title><meta name="description" content="Session Management in Java - John Doe"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" href="/favicon.png"><link rel="stylesheet" href="/css/apollo.css"><link rel="search" type="application/opensearchdescription+xml" href="http://yoursite.com/atom.xml" title="FuXi's Daily"></head><body><div class="wrap"><header><a href="/" class="logo-link"><img src="/favicon.png" alt="logo"></a><ul class="nav nav-list"><li class="nav-list-item"><a href="/" target="_self" class="nav-list-link">BLOG</a></li><li class="nav-list-item"><a href="/archives/" target="_self" class="nav-list-link">ARCHIVE</a></li><li class="nav-list-item"><a href="https://github.com/fuxi1993" target="_blank" class="nav-list-link">GITHUB</a></li></ul></header><main class="container"><div class="post"><article class="post-block"><h1 class="post-title">Session Management in Java</h1><div class="post-info">Oct 2, 2018</div><div class="post-content"><p>本文旨在解释使用不同技术和示例程序的servlet中的会话管理。</p>
+<h1 id="1-什么是Session"><a href="#1-什么是Session" class="headerlink" title="1. 什么是Session"></a>1. 什么是Session</h1><p>HTTP协议和Web服务器是无状态的，这意味着对于Web服务器而言，每个请求都是一个新的处理请求，并且无法识别它是否来自之前已发送请求的客户端。 但有时在Web应用程序中，我们应该知道客户端是谁并相应地处理请求。 例如，购物车应用程序应该知道谁正在发送物品的请求以及在哪个购物车中添加物品或者谁正在发送结账请求，以便它可以向正确的客户收取金额。</p>
+<p><strong>Session</strong>是客户端和服务器之间的转换状态，它可以包含客户端和服务器之间的多个请求和响应。 由于HTTP和Web Server都是无状态的，因此维护会话的唯一方法是在每个请求和响应中在服务器和客户端之间传递关于会话（会话ID）的一些唯一信息。</p>
+<p>我们可以通过多种方式在请求和响应中提供唯一标识符:</p>
+<ol>
+<li><p><strong>User Authentication</strong> - 这是一种非常常见的方式，通过我们用户从登录页面提供身份验证凭据，然后我们可以在服务器和客户端之间传递身份验证信息以维护会话。 这不是一种非常有效的方法，因为如果同一用户从不同的浏览器登录，它将无法工作。</p>
+</li>
+<li><p><strong>HTML Hidden Field</strong> - 我们可以在HTML中创建一个唯一的隐藏字段，当用户开始导航时，我们可以将其值设置为对用户唯一并跟踪会话。 此方法不能与链接一起使用，因为每次从具有隐藏字段的客户端到服务器发出请求时，它都需要提交表单。 它也不安全，因为我们可以从HTML源获取隐藏的字段值并使用它来破解会话。</p>
+</li>
+<li><p><strong>URL Rewriting</strong> - 我们可以为每个请求和响应附加会话标识符参数，以跟踪会话。这非常繁琐，因为我们需要在每个响应中跟踪此参数，并确保它不与其他参数冲突。</p>
+</li>
+<li><p><strong>Cookies</strong> - Cookie是Web服务器在响应标头中发送并存储在浏览器Cookie中的一小段信息。 当客户端进一步请求时，它会将cookie添加到请求标头中，我们可以利用它来跟踪会话。 我们可以使用cookie维护会话，但如果客户端禁用cookie，则它将无效。</p>
+</li>
+</ol>
+<p>5.<strong>Session Management API</strong> - 会话管理API建立在上述会话跟踪方法之上。 上述所有方法的一些主要缺点是：</p>
+<ul>
+<li><p>大多数情况下，我们不希望仅跟踪会话，我们必须将一些数据存储到我们可以在将来的请求中使用的会话中。如果我们尝试实现这一点，这将需要很多努力。</p>
+</li>
+<li><p>上述所有方法本身并不完整，所有这些方法都不适用于特定场景。因此，我们需要一种能够利用这些会话跟踪方法在所有情况下提供会话管理的解决方案；</p>
+</li>
+</ul>
+<p>这就是我们需要会话管理API和J2EE Servlet技术的原因，我们可以使用会话管理API。</p>
+<h1 id="2-Java中的会话管理-Cookies"><a href="#2-Java中的会话管理-Cookies" class="headerlink" title="2. Java中的会话管理 -Cookies"></a>2. Java中的会话管理 -Cookies</h1><p>Cookie会在Web应用程序中大量使用，以根据你的选择个性化响应或跟踪会话。 在继续使用Servlet会话管理API之前，我想展示如何通过一个小型Web应用程序跟踪cookie的会话。</p>
+<h1 id="3-Session-in-Java-HttpSession"><a href="#3-Session-in-Java-HttpSession" class="headerlink" title="3. Session in Java -HttpSession"></a>3. Session in Java -HttpSession</h1><p>Servlet API通过HttpSession接口提供会话管理。我们可以使用以下方法从HttpServletRequest对象获取会话。 HttpSession允许我们将对象设置为可在将来的请求中检索的属性。</p>
+<ol>
+<li><em>HttpSession getSession()</em> - 此方法始终返回HttpSession对象。它返回随请求附加的会话对象，如果请求没有附加会话，则它创建一个新会话并返回它。</li>
+<li><em>HttpSession getSession(boolean flag)</em> - 如果请求具有会话，则此方法返回HttpSession对象，否则返回null。</li>
+</ol>
+<p>HttpSession的一些重要方法是：</p>
+<ol>
+<li><em>String getId()</em> - 返回包含分配给此会话的唯一标识符的字符串。</li>
+<li><em>Object getAttribute(String name)</em> - 返回在此会话中使用指定名称绑定的对象，如果名称下没有绑定任何对象，则返回null。 使用Session属性的其他一些方法是getAttributeNames（），removeAttribute（String name）和setAttribute（String name，Object value）。</li>
+<li><em>long getCreationTime()</em> - 返回创建此会话的时间，以格林威治标准时间1970年1月1日午夜以来的毫秒数为单位。我们可以使用getLastAccessedTime（）方法获取上次访问的时间。</li>
+<li><em>setMaxInactiveInterval(int interval)</em> - 指定servlet容器使此会话失效之前的客户端请求之间的时间（以秒为单位）。我们可以从getMaxInactiveInterval（）方法获取会话超时值。</li>
+<li><em>ServletContext getServletContext()</em> - 返回应用程序的ServletContext对象。</li>
+<li><em>boolean isNew()</em> - 如果客户端尚未了解会话或客户端选择不加入会话，则返回true。</li>
+<li><em>void invalidate()</em> - 使此会话无效，然后取消绑定绑定到它的任何对象。</li>
+</ol>
+<h2 id="理解-JSESSIONID-Cookie"><a href="#理解-JSESSIONID-Cookie" class="headerlink" title="理解 JSESSIONID Cookie"></a>理解 JSESSIONID Cookie</h2><p>当我们使用HttpServletRequest getSession（）方法并创建一个新请求时，它会创建新的HttpSession对象，并将Cookie添加到响应对象，名称为JSESSIONID，值为会话ID。 此cookie用于在来自客户端的进一步请求中标识HttpSession对象。 如果在客户端禁用了cookie并且我们正在使用URL重写，则此方法使用请求URL中的jsessionid值来查找相应的会话。 JSESSIONID cookie用于会话跟踪，因此我们不应将其用于我们的应用程序目的，以避免任何与会话相关的问题。</p>
+<h1 id="4-Session-Management-in-Java-Servlet-–-URL-Rewriting"><a href="#4-Session-Management-in-Java-Servlet-–-URL-Rewriting" class="headerlink" title="4.Session Management in Java Servlet – URL Rewriting"></a>4.Session Management in Java Servlet – URL Rewriting</h1><p>正如我们在上一节中看到的那样，我们可以使用HttpSession管理会话但是如果我们在浏览器中禁用cookie，它将无法工作，因为服务器不会从客户端接收JSESSIONID cookie。</p>
+<p>Servlet API为URL重写提供支持，在这种情况下我们可以使用它来管理会话。 最好的部分是从编码的角度来看，它非常容易使用并涉及一步 - 编码URL。 Servlet URL编码的另一个好处是它是一种后备方法，只有在禁用浏览器cookie时它才能启动。</p>
+<p>我们可以使用HttpServletResponse encodeURL（）方法对URL进行编码，如果我们必须将请求重定向到另一个资源并且我们想要提供会话信息，我们可以使用encodeRedirectURL（）方法。</p>
+<h1 id="5-参考文档"><a href="#5-参考文档" class="headerlink" title="5.参考文档"></a>5.参考文档</h1><p><a href="https://www.journaldev.com/1907/java-session-management-servlet-httpsession-url-rewriting" target="_blank" rel="noopener">Session Management in Java – HttpServlet, Cookies, URL Rewriting</a></p>
+</div></article></div></main><footer><div class="paginator"><a href="/2018/10/02/Servelt-in-Java-EE/" class="next">NEXT</a></div><div class="copyright"><p>© 2015 - 2018 <a href="http://yoursite.com">John Doe</a>, powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/pinggod/hexo-theme-apollo" target="_blank">hexo-theme-apollo</a>.</p></div></footer></div><script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" integrity="sha384-crwIf/BuaWM9rM65iM+dWFldgQ1Un8jWZMuh3puxb8TOY9+linwLoI7ZHZT+aekW" crossorigin="anonymous"></script></body></html>
