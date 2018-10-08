@@ -71,4 +71,74 @@
     
   </url>
   
+  <url>
+    <loc>http://yoursite.com/2017/08/23/pub-sub-example-in-golang/</loc>
+    
+    <lastmod>2017-08-23T08:08:37.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2017/08/17/ipvsOnK8s/</loc>
+    
+    <lastmod>2017-08-18T06:18:13.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2017/07/29/toastforspringcloud/</loc>
+    
+    <lastmod>2017-08-08T06:29:24.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2017/08/04/cc-uploader-in-CloudFoundry/</loc>
+    
+    <lastmod>2017-08-04T06:37:53.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2018/09/06/BBSinCloudFoundry(2)/</loc>
+    
+    <lastmod>2017-07-25T06:41:05.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2018/09/06/auctioineerCP/</loc>
+    
+    <lastmod>2017-07-24T01:09:59.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2018/09/06/Connecting%20BBS%20with%20Kubernetes/</loc>
+    
+    <lastmod>2017-07-24T01:09:52.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2018/09/06/RepCF/</loc>
+    
+    <lastmod>2017-07-24T01:09:24.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2018/09/06/AuctioninCF/</loc>
+    
+    <lastmod>2017-07-24T01:08:04.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2018/09/06/BBS%20in%20CloudFoundry/</loc>
+    
+    <lastmod>2017-07-24T01:07:27.000Z</lastmod>
+    
+  </url>
+  
 </urlset>
