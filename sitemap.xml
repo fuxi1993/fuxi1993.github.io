@@ -2,37 +2,37 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://yoursite.com/2018/10/09/Java-Servlet-Cookies/</loc>
+    <loc>http://yoursite.com/2018/10/08/Servlet-Listener/</loc>
     
-    <lastmod>2018-10-09T06:32:39.000Z</lastmod>
+    <lastmod>2018-10-09T09:24:51.000Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://yoursite.com/2018/10/02/Servelt-in-Java-EE/</loc>
     
-    <lastmod>2018-10-08T07:53:24.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2018/10/08/Servlet-Listener/</loc>
-    
-    <lastmod>2018-10-08T07:52:17.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2018/10/02/Java-Servlet-Filter/</loc>
-    
-    <lastmod>2018-10-08T06:00:26.000Z</lastmod>
+    <lastmod>2018-10-09T07:43:56.000Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://yoursite.com/2018/10/02/Session-Management-in-Java/</loc>
     
-    <lastmod>2018-10-08T05:59:56.000Z</lastmod>
+    <lastmod>2018-10-09T07:42:54.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2018/10/02/Java-Servlet-Filter/</loc>
+    
+    <lastmod>2018-10-09T07:39:01.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2018/10/09/Java-Servlet-Cookies/</loc>
+    
+    <lastmod>2018-10-09T07:37:01.000Z</lastmod>
     
   </url>
   
